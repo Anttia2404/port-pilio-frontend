@@ -28,19 +28,23 @@ export default function AddWeekForm({
         >
           &times;
         </button>
-        <h3 className="text-xl font-semibold mb-4 dark:text-white">
+
+        {/* (SỬA Ở ĐÂY) Thêm "text-gray-900" cho nền sáng */}
+        <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
           Tạo Tuần Học Mới
         </h3>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* (5) Bỏ input 'id' */}
           <div>
+            {/* (SỬA Ở ĐÂY) Thêm lại nội dung cho Label */}
             <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"></label>
             <input
               type="text"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
+              // (SỬA Ở ĐÂY) Thêm "text-gray-900" cho nền sáng
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
               required
             />
           </div>

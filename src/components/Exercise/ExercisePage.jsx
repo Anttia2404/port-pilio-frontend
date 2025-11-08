@@ -215,7 +215,9 @@ export default function ExercisePage() {
 
         {isLoading && weeks.length === 0 && (
           <div className="flex justify-center items-center h-40">
-            <p className="text-lg dark:text-white">Đang tải dữ liệu...</p>
+            <p className="text-lg text-gray-900 dark:text-white ">
+              Đang tải dữ liệu...
+            </p>
           </div>
         )}
 

@@ -49,11 +49,13 @@ export default function AddExerciseForm({
         <button
           onClick={onClose}
           className="absolute top-3 right-3 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 text-2xl"
+          disabled={isLoading} // Thêm disabled
         >
           &times;
         </button>
 
-        <h3 className="text-xl font-semibold mb-4 dark:text-white">
+        {/* (SỬA Ở ĐÂY) Thêm "text-gray-900" */}
+        <h3 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
           {isEditMode ? "Cập nhật bài tập" : "Thêm bài tập mới"}
         </h3>
 
@@ -69,12 +71,13 @@ export default function AddExerciseForm({
               value={title}
               onChange={(e) => setTitle(e.target.value)}
               // (5) Nếu là chế độ Sửa, chúng ta không cho sửa tiêu đề
-              // (Vì logic "Buổi X" đã được tạo)
-              // Bạn có thể bỏ 'disabled' nếu muốn cho phép sửa
               disabled={isEditMode}
-              className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white
+              // (SỬA Ở ĐÂY) Thêm "text-gray-900"
+              className={`w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white
                          ${
-                           isEditMode ? "bg-gray-100 dark:bg-neutral-900" : ""
+                           isEditMode
+                             ? "bg-gray-100 dark:bg-neutral-900 cursor-not-allowed" // Thêm cursor-not-allowed
+                             : ""
                          }`}
               required
             />
@@ -89,7 +92,8 @@ export default function AddExerciseForm({
               value={notes}
               onChange={(e) => setNotes(e.target.value)}
               rows={3}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
+              // (SỬA Ở ĐÂY) Thêm "text-gray-900"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
             />
           </div>
           <div>
@@ -101,7 +105,8 @@ export default function AddExerciseForm({
               value={repoLink}
               onChange={(e) => setRepoLink(e.target.value)}
               placeholder="https://github.com/..."
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
+              // (SỬA Ở ĐÂY) Thêm "text-gray-900"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
             />
           </div>
           <div>
@@ -113,7 +118,8 @@ export default function AddExerciseForm({
               value={deployLink}
               onChange={(e) => setDeployLink(e.target.value)}
               placeholder="https://my-project.vercel.app"
-              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
+              // (SỬA Ở ĐÂY) Thêm "text-gray-900"
+              className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-gray-900 dark:bg-neutral-700 dark:border-neutral-600 dark:text-white"
             />
           </div>
 
