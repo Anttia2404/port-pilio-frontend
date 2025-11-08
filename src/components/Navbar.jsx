@@ -64,6 +64,7 @@ const Navbar = () => {
     { title: "Giới thiệu", to: "/about" },
     { title: "Dự án", to: "/projects" },
     { title: "Liên hệ", to: "/contact" },
+    { title: "Bài tập", to: "/exercise" },
   ];
 
   return (
@@ -75,14 +76,14 @@ const Navbar = () => {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className=" px-6">
+        <div className="flex items-center justify-between h-20 w-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
           >
-            Võ Tấn Tài
+            Portpilio
           </motion.div>
 
           {/* Desktop Menu */}

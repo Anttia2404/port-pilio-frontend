@@ -1,49 +1,64 @@
 import { motion } from "framer-motion";
-import { FiGithub, FiLinkedin, FiMail, FiFacebook } from "react-icons/fi";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FaFacebook } from "react-icons/fa";
 import { NavLink } from "react-router";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
+  // const currentYear = new Date().getFullYear();
 
   const menuItems = [
-    { title: "หน้าแรก", to: "/" },
-    { title: "เกี่ยวกับ", to: "/about" },
-    { title: "ผลงาน", to: "/projects" },
-    { title: "ติดต่อ", to: "/contact" },
+    { title: "Trang chủ", to: "/" },
+    { title: "Giới thiệu", to: "/about" },
+    { title: "Dự án", to: "/projects" },
+    { title: "Bài tập", to: "/exercises" },
+    { title: "Liên hệ", to: "/contact" },
   ];
 
   const socialLinks = [
-    { icon: FiGithub, href: "https://github.com", label: "GitHub" },
-    { icon: FiLinkedin, href: "https://linkedin.com", label: "LinkedIn" },
-    { icon: FiMail, href: "https://gmail.com", label: "Email" },
-    { icon: FiFacebook, href: "https://facebook.com", label: "Facebook" },
+    {
+      icon: FiGithub,
+      href: "https://github.com/Anttia2404",
+      label: "GitHub",
+    },
+    {
+      icon: FiLinkedin,
+      href: "https://www.linkedin.com/",
+      label: "LinkedIn",
+    },
+    {
+      icon: FiMail,
+      href: "https://mail.google.com/mail/u/0/?fs=1&to=tanloc01293@gmail.com&tf=cm",
+      label: "Email",
+    },
+    {
+      icon: FaFacebook,
+      href: "https://www.facebook.com/tan.tai.124297/?locale=vi_VN",
+      label: "Facebook",
+    },
   ];
 
   return (
     <footer className="bg-white dark:bg-neutral-900 border-t border-gray-200 dark:border-neutral-800">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Logo and Description */}
           <div className="space-y-4">
             <motion.div
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+              className="text-2xl font-bold bg-linear-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
             >
-              Your Name
+              Võ Tấn Tài
             </motion.div>
             <p className="text-gray-600 dark:text-gray-400 text-sm">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud
+              Một lập trình viên Full-stack đam mê xây dựng các ứng dụng web
+              hiện đại, hiệu quả và có ý nghĩa.
             </p>
           </div>
 
-          {/* Quick Links */}
           <div>
             <h3 className="text-gray-900 dark:text-white font-semibold mb-4">
-              เมนูลัด
+              Liên kết nhanh
             </h3>
             <ul className="space-y-2">
               {menuItems.map((item) => (
@@ -62,18 +77,17 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact and Social */}
           <div>
             <h3 className="text-gray-900 dark:text-white font-semibold mb-4">
-              ติดต่อ
+              Liên hệ
             </h3>
             <div className="space-y-4">
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                อีเมล: your@email.com
+                Email: tanloc01293@gmail.com
                 <br />
-                โทร: 123-456-789
+                Phone: (+84) 367 061 068
                 <br />
-                ที่อยู่: กรุงเทพมหานคร, ประเทศไทย
+                Địa chỉ: TP. Hồ Chí Minh, Việt Nam
               </p>
               <div className="flex space-x-4">
                 {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -94,22 +108,21 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-8 pt-8 border-t border-gray-200 dark:border-neutral-800">
+        {/* <div className="mt-8 pt-8 border-t border-gray-200 dark:border-neutral-800">
           <p className="text-center text-sm text-gray-600 dark:text-gray-400">
-            © {currentYear} Your Name. All rights reserved.
+            © {currentYear} Võ Tấn Tài. Đã đăng ký bản quyền.
             <br />
-            Template Made by:{" "}
-            <NavLink
-              to={"https://github.com/NekoSakuraLucia/Web-Portfolio-React"}
+            Template được làm bởi:{" "}
+            <a
+              href="https://github.com/NekoSakuraLucia/Web-Portfolio-React"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2 decoration-blue-500"
             >
               NekoSakuraLucia
-            </NavLink>
+            </a>
           </p>
-        </div>
+        </div> */}
       </div>
     </footer>
   );

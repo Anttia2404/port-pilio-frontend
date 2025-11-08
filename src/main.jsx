@@ -8,6 +8,7 @@ import Projects from "@/components/Projects/Projects";
 import Contact from "@/components/Contact/Contact";
 import App from "./App";
 import "./index.css";
+import ExercisePage from "./components/Exercise/ExercisePage";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
@@ -19,6 +20,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/exercise" element={<ExercisePage />} />
           </Routes>
         </App>
       </Router>
