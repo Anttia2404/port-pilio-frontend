@@ -162,3 +162,12 @@
     @apply bg-background text-foreground;
   }
 }
+
+@layer base {
+  ::selection {
+    @apply bg-indigo-200 text-indigo-900;
+  }
+  .dark ::selection {
+    @apply bg-indigo-700 text-indigo-100;
+  }
+}
