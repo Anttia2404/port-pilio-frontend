@@ -61,7 +61,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/huddle-landing-page-with-single-introductory-section-master/main/preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/huddle-landing-page-with-single-introductory-section-master",
-    demo: "https://huddle-landing-page-with-single-introductory-section-master-nine.vercel.app/",
+    demo: "https://huddle-landing-page-with-single-int-sable.vercel.app/",
     category: "web",
   },
 
@@ -111,7 +111,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/social-proof-section-master/main/design/desktop-preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/social-proof-section-master",
-    demo: "https://social-proof-section-master-chi-eight.vercel.app/",
+    demo: "https://social-proof-section-master-sage-seven.vercel.app/",
     category: "web",
   },
   {
@@ -123,7 +123,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/four-card-feature-section-master/main/design/desktop-preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/four-card-feature-section-master",
-    demo: "https://four-card-feature-section-master-tau-ten.vercel.app/",
+    demo: "https://four-card-feature-section-master-3t.vercel.app/",
     category: "web",
   },
   {
@@ -135,7 +135,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/3-column-preview-card-component-main/main/preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/3-column-preview-card-component-main",
-    demo: "https://3-column-preview-card-component-main-nine-theta.vercel.app/",
+    demo: "https://3-column-preview-card-component-mai-sage.vercel.app/",
     category: "web",
   },
   {
@@ -171,7 +171,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/stats-preview-card-component-main/main/preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/stats-preview-card-component-main",
-    demo: "https://stats-preview-card-component-main-ten-chi.vercel.app/",
+    demo: "https://stats-preview-card-component-main-one-pink.vercel.app/",
     category: "web",
   },
   {
@@ -207,7 +207,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/order-summary-component-main/main/preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/order-summary-component-main",
-    demo: "https://order-summary-component-main-psi-blond.vercel.app/",
+    demo: "https://order-summary-component-main-two-gamma.vercel.app/",
     category: "web",
   },
   {
@@ -219,7 +219,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/results-summary-component-main/main/preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/results-summary-component-main",
-    demo: "https://results-summary-component-main-zeta-six.vercel.app/",
+    demo: "https://results-summary-component-main-six-coral.vercel.app/",
     category: "web",
   },
   {
@@ -231,7 +231,7 @@ const projects = [
       "https://raw.githubusercontent.com/Anttia2404/product-preview-card-component-main/main/design/desktop-preview.jpg",
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/product-preview-card-component-main",
-    demo: "https://product-preview-card-component-main-tau-ten.vercel.app/",
+    demo: "https://product-preview-card-component-main-eight-wheat.vercel.app/",
     category: "web",
   },
   {
@@ -256,6 +256,18 @@ const projects = [
     tags: ["HTML", "CSS"],
     github: "https://github.com/Anttia2404/social-links-profile-main",
     demo: "https://social-links-profile-main-wheat.vercel.app/",
+    category: "web",
+  },
+  {
+    id: 20,
+    title: "Blog Preview Card",
+    description:
+      "Card component hiển thị blog preview với image, category tag và author info.",
+    image:
+      "https://raw.githubusercontent.com/Anttia2404/blog-preview-card-main/main/preview.jpg",
+    tags: ["HTML", "CSS"],
+    github: "https://github.com/Anttia2404/blog-preview-card-main",
+    demo: "https://blog-preview-card-main-five-gold.vercel.app/",
     category: "web",
   },
 ];
