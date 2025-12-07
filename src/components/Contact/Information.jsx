@@ -1,8 +1,17 @@
 import { motion } from "framer-motion";
-import { FiMail, FiPhone, FiMapPin } from "react-icons/fi";
+import { FiMail, FiPhone, FiMapPin, FiCopy, FiCheck } from "react-icons/fi";
 import { SiFacebook, SiGithub, SiLinkedin } from "react-icons/si";
+import { useState } from "react";
 
 export default function Information() {
+  const [copiedItem, setCopiedItem] = useState(null);
+
+  const handleCopy = (text, label) => {
+    navigator.clipboard.writeText(text);
+    setCopiedItem(label);
+    setTimeout(() => setCopiedItem(null), 2000);
+  };
+
   const contactInfo = [
     {
       icon: FiMail,
@@ -12,15 +21,18 @@ export default function Information() {
       color: "text-red-500",
       bgColor: "bg-red-50 dark:bg-red-900/20",
       borderColor: "hover:border-red-200 dark:hover:border-red-800",
+      copyable: true,
     },
     {
       icon: FiPhone,
       label: "Điện thoại",
       value: "(+84) 367061068",
+      copyValue: "+84367061068",
       href: "tel:+84367061068",
       color: "text-green-500",
       bgColor: "bg-green-50 dark:bg-green-900/20",
       borderColor: "hover:border-green-200 dark:hover:border-green-800",
+      copyable: true,
     },
     {
       icon: FiMapPin,
@@ -30,6 +42,7 @@ export default function Information() {
       color: "text-blue-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       borderColor: "hover:border-blue-200 dark:hover:border-blue-800",
+      copyable: false,
     },
   ];
 
@@ -65,29 +78,60 @@ export default function Information() {
         <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
           Thông tin liên hệ
         </h3>
-        {contactInfo.map(({ icon: Icon, label, value, href, color, bgColor, borderColor }) => (
-          <motion.a
+        {contactInfo.map(({ icon: Icon, label, value, copyValue, href, color, bgColor, borderColor, copyable }) => (
+          <motion.div
             key={label}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`flex items-center p-5 bg-white dark:bg-neutral-800 rounded-2xl shadow-sm 
-                       border border-transparent ${borderColor}
-                       hover:shadow-lg transition-all duration-300 group`}
+            className="relative"
             whileHover={{ scale: 1.02, y: -2 }}
           >
-            <div className={`p-4 rounded-xl ${bgColor} transition-colors duration-300`}>
-              <Icon className={`w-6 h-6 ${color}`} />
-            </div>
-            <div className="ml-5">
-              <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
-                {label}
-              </p>
-              <p className="text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
-                {value}
-              </p>
-            </div>
-          </motion.a>
+            <a
+              href={href}
+              {...(href.startsWith('http') && { target: "_blank", rel: "noopener noreferrer" })}
+              className={`flex items-center p-5 bg-white dark:bg-neutral-800 rounded-2xl shadow-sm 
+                         border border-transparent ${borderColor}
+                         hover:shadow-lg transition-all duration-300 group`}
+            >
+              <div className={`p-4 rounded-xl ${bgColor} transition-colors duration-300`}>
+                <Icon className={`w-6 h-6 ${color}`} />
+              </div>
+              <div className="ml-5 flex-1">
+                <p className="text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
+                  {label}
+                </p>
+                <p className="text-base md:text-lg font-semibold text-gray-900 dark:text-white group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">
+                  {value}
+                </p>
+              </div>
+              {copyable && (
+                <motion.button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleCopy(copyValue || value, label);
+                  }}
+                  className="p-3 rounded-lg bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.9 }}
+                  title="Copy"
+                >
+                  {copiedItem === label ? (
+                    <FiCheck className="w-5 h-5 text-green-500" />
+                  ) : (
+                    <FiCopy className="w-5 h-5 text-gray-600 dark:text-gray-300" />
+                  )}
+                </motion.button>
+              )}
+            </a>
+            {copiedItem === label && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                className="absolute top-0 right-0 -mt-2 -mr-2 px-3 py-1 bg-green-500 text-white text-sm rounded-full shadow-lg z-10"
+              >
+                Đã copy!
+              </motion.div>
+            )}
+          </motion.div>
         ))}
       </div>
 
