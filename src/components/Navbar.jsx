@@ -18,6 +18,7 @@ const NavItem = ({ to, children }) => {
             : "text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400"
         } transition-colors
       `}
+      aria-current={({ isActive }) => (isActive ? "page" : undefined)}
     >
       {({ isActive }) => (
         <motion.span className="relative py-2" whileHover={{ scale: 1.05 }}>
@@ -45,7 +46,6 @@ NavItem.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-// ส่วนคอมโพเนนต์จริง (Navbar)
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -58,6 +58,17 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Close menu on Escape key
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === "Escape" && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, [isOpen]);
 
   const menuItems = [
     { title: "Trang chủ", to: "/" },
@@ -72,49 +83,68 @@ const Navbar = () => {
       className={`fixed w-full z-50 transition-all duration-500 
       ${
         scrolled
-          ? "bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-lg"
+          ? "glass-effect glass-noise shadow-xl"
           : "bg-transparent"
       }`}
+      role="navigation"
+      aria-label="Main navigation"
     >
-      <div className=" px-6">
+      <div className="px-6">
         <div className="flex items-center justify-between h-20 w-full">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent"
+            whileHover={{ scale: 1.05, rotate: 2 }}
+            whileTap={{ scale: 0.95 }}
+            className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent cursor-pointer"
+            role="banner"
           >
-            Portpilio
+            <span className="font-mono flex items-center gap-1">
+              <span className="text-green-500 dark:text-green-400 animate-pulse">{">"}</span>
+              <span className="relative">
+                <span className="bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 bg-clip-text text-transparent font-bold">
+                  Portfolio
+                </span>
+                <span className="absolute inset-0 bg-gradient-to-r from-purple-600 via-pink-500 to-indigo-600 bg-clip-text text-transparent font-bold blur-sm opacity-50 animate-pulse">
+                  Portfolio
+                </span>
+              </span>
+              <span className="inline-block w-2 h-5 bg-purple-600 animate-pulse ml-0.5"></span>
+            </span>
           </motion.div>
 
-          {/* Desktop Menu */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-8" role="menubar">
             {menuItems.map((item) => (
               <NavItem key={item.title} to={item.to}>
                 {item.title}
               </NavItem>
             ))}
 
-            {/* Theme Toggle Button */}
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300
                 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
+              aria-label={darkMode ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối"}
+              aria-pressed={darkMode}
+              title={darkMode ? "Chế độ sáng" : "Chế độ tối"}
             >
-              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+              {darkMode ? <FiSun size={20} aria-hidden="true" /> : <FiMoon size={20} aria-hidden="true" />}
             </motion.button>
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden flex items-center space-x-4">
             <motion.button
               onClick={toggleTheme}
               className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300
                 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
               whileTap={{ scale: 0.95 }}
+              aria-label={darkMode ? "Chuyển sang chế độ sáng" : "Chuyển sang chế độ tối"}
+              aria-pressed={darkMode}
+              title={darkMode ? "Chế độ sáng" : "Chế độ tối"}
             >
-              {darkMode ? <FiSun size={20} /> : <FiMoon size={20} />}
+              {darkMode ? <FiSun size={20} aria-hidden="true" /> : <FiMoon size={20} aria-hidden="true" />}
             </motion.button>
 
             <motion.button
@@ -122,15 +152,18 @@ const Navbar = () => {
               className="text-gray-700 dark:text-gray-300 hover:text-indigo-600 dark:hover:text-indigo-400
                 p-2 rounded-lg hover:bg-gray-100/50 dark:hover:bg-gray-800/50"
               whileTap={{ scale: 0.95 }}
+              aria-label={isOpen ? "Đóng menu" : "Mở menu"}
+              aria-expanded={isOpen}
+              aria-controls="mobile-menu"
             >
-              {isOpen ? <HiX size={24} /> : <HiMenuAlt3 size={24} />}
+              {isOpen ? <HiX size={24} aria-hidden="true" /> : <HiMenuAlt3 size={24} aria-hidden="true" />}
             </motion.button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
       <motion.div
+        id="mobile-menu"
         initial={false}
         animate={{
           height: isOpen ? "auto" : 0,
@@ -138,6 +171,8 @@ const Navbar = () => {
         }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="md:hidden overflow-hidden bg-white/90 dark:bg-gray-900/90 backdrop-blur-md"
+        role="menu"
+        aria-hidden={!isOpen}
       >
         <div className="px-6 py-4 space-y-3">
           {menuItems.map((item) => (
@@ -153,6 +188,8 @@ const Navbar = () => {
                 }
               `}
               onClick={() => setIsOpen(false)}
+              role="menuitem"
+              aria-current={({ isActive }) => (isActive ? "page" : undefined)}
             >
               {item.title}
             </NavLink>

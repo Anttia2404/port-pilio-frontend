@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router";
 import { ThemeProvider } from "@/context/ThemeContext";
 import Hero from "@/components/Home/Hero";
+import ScrollIndicator from "@/components/Home/ScrollIndicator";
 import About from "@/components/About/About";
 import Projects from "@/components/Projects/Projects";
 import Contact from "@/components/Contact/Contact";
@@ -16,7 +17,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Router>
         <App>
           <Routes>
-            <Route path="/" element={<Hero />} />
+            <Route path="/" element={<><Hero /><ScrollIndicator /></>} />
             <Route path="/about" element={<About />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/contact" element={<Contact />} />

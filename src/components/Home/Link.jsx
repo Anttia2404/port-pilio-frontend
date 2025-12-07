@@ -31,7 +31,7 @@ export default function Link() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="p-4 text-gray-600 hover:text-indigo-600 transition-all duration-300 rounded-full hover:bg-indigo-50 hover:shadow-md"
+            className="p-4 text-gray-600 dark:text-gray-400 hover:text-purple-600 dark:hover:text-purple-400 transition-all duration-300 rounded-full hover:bg-purple-50 dark:hover:bg-purple-950/30 hover:shadow-md hover:shadow-purple-500/20"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
           >
