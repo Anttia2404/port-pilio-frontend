@@ -86,7 +86,7 @@ export default function Title() {
 
           {/* Terminal-style role with typing effect */}
           <motion.div 
-            className="flex items-center justify-center gap-3 text-2xl sm:text-3xl md:text-4xl"
+            className="flex items-center justify-center gap-3 text-2xl sm:text-3xl md:text-4xl mt-19"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}

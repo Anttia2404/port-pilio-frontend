@@ -6,6 +6,7 @@ import Title from "./Title";
 import Link from "./Link";
 import Avatar from "./Avatar";
 import DevStats from "./DevStats";
+import SolarSystemBackground from "./SolarSystemBackground";
 
 const Hero = () => {
   const { scrollY } = useScroll();
@@ -75,16 +76,8 @@ const Hero = () => {
         </div>
       </motion.div>
 
-      {/* Animated code-style blobs */}
-      <motion.div 
-        className="absolute inset-0 opacity-40 overflow-hidden"
-        style={{ y: y2, opacity, x: bgX, translateY: bgY }}
-      >
-        <div className="absolute top-10 left-10 w-96 h-96 bg-cyan-400 dark:bg-cyan-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob" />
-        <div className="absolute top-10 right-10 w-96 h-96 bg-blue-400 dark:bg-blue-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob animation-delay-2000" />
-        <div className="absolute bottom-10 left-20 w-96 h-96 bg-indigo-400 dark:bg-indigo-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob animation-delay-4000" />
-        <div className="absolute bottom-10 right-20 w-96 h-96 bg-purple-400 dark:bg-purple-600 rounded-full mix-blend-multiply dark:mix-blend-soft-light filter blur-3xl animate-blob animation-delay-6000" />
-      </motion.div>
+      {/* Solar System Background */}
+      <SolarSystemBackground />
 
       {/* Terminal-style grid pattern */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(99,102,241,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(99,102,241,0.05)_1px,transparent_1px)] bg-[size:50px_50px]" />

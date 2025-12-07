@@ -34,18 +34,130 @@ export default function ScrollIndicator() {
         transition={{ duration: 2, repeat: Infinity }}
       >
         <span className="text-sm font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-600 to-purple-600 dark:from-cyan-400 dark:to-purple-400 tracking-wider uppercase">
-          Scroll Down
+          Cuộn Xuống
         </span>
       </motion.div>
 
-      {/* Mouse icon - Larger and more vibrant */}
-      <div className="relative w-8 h-14 border-3 border-cyan-500 dark:border-cyan-400 rounded-full flex justify-center overflow-hidden group-hover:border-purple-500 dark:group-hover:border-purple-400 transition-colors shadow-lg shadow-cyan-500/50 dark:shadow-cyan-400/50 group-hover:shadow-purple-500/50 dark:group-hover:shadow-purple-400/50">
-        <motion.div
-          className="w-2 h-4 bg-gradient-to-b from-cyan-500 to-purple-500 dark:from-cyan-400 dark:to-purple-400 rounded-full absolute top-3 shadow-lg"
-          animate={{ y: [0, 16, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </div>
+      {/* Space Shuttle icon - pointing down */}
+      <motion.div
+        className="relative w-16 h-20 flex items-center justify-center"
+        animate={{ y: [0, 8, 0] }}
+        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+      >
+        <svg
+          className="w-14 h-18"
+          viewBox="0 0 100 140"
+          fill="none"
+        >
+          {/* Main body */}
+          <ellipse cx="50" cy="50" rx="18" ry="45" fill="#e5e7eb" className="dark:fill-gray-300" />
+          <ellipse cx="50" cy="50" rx="14" ry="42" fill="#f3f4f6" className="dark:fill-gray-200" />
+          
+          {/* Nose cone - black */}
+          <ellipse cx="50" cy="20" rx="14" ry="20" fill="#1f2937" />
+          
+          {/* Windows */}
+          <circle cx="50" cy="35" r="3" fill="#60a5fa" opacity="0.8" />
+          <circle cx="50" cy="42" r="2.5" fill="#60a5fa" opacity="0.6" />
+          
+          {/* Left wing */}
+          <path
+            d="M 32 60 Q 15 70 10 85 L 20 80 Q 30 70 35 65 Z"
+            fill="#d1d5db"
+            className="dark:fill-gray-400"
+          />
+          <path
+            d="M 32 60 Q 18 68 15 82 L 22 78 Q 30 68 35 65 Z"
+            fill="#e5e7eb"
+            className="dark:fill-gray-300"
+          />
+          
+          {/* Right wing */}
+          <path
+            d="M 68 60 Q 85 70 90 85 L 80 80 Q 70 70 65 65 Z"
+            fill="#d1d5db"
+            className="dark:fill-gray-400"
+          />
+          <path
+            d="M 68 60 Q 82 68 85 82 L 78 78 Q 70 68 65 65 Z"
+            fill="#e5e7eb"
+            className="dark:fill-gray-300"
+          />
+          
+          {/* Tail fin */}
+          <path
+            d="M 45 85 L 50 105 L 55 85 Z"
+            fill="#9ca3af"
+            className="dark:fill-gray-500"
+          />
+          
+          {/* Engine nozzles */}
+          <ellipse cx="45" cy="95" rx="4" ry="3" fill="#374151" />
+          <ellipse cx="55" cy="95" rx="4" ry="3" fill="#374151" />
+          <ellipse cx="50" cy="98" rx="3" ry="2" fill="#374151" />
+          
+          {/* Rocket flames - animated */}
+          <motion.g
+            animate={{ 
+              opacity: [0.7, 1, 0.7],
+              scaleY: [0.9, 1.2, 0.9]
+            }}
+            transition={{ 
+              duration: 0.3, 
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          >
+            {/* Left flame */}
+            <path
+              d="M 45 95 Q 43 105 41 115 Q 45 110 45 95 Z"
+              fill="#f97316"
+              opacity="0.9"
+            />
+            <path
+              d="M 45 95 Q 44 102 43 110 Q 45 105 45 95 Z"
+              fill="#fbbf24"
+              opacity="0.8"
+            />
+            
+            {/* Right flame */}
+            <path
+              d="M 55 95 Q 57 105 59 115 Q 55 110 55 95 Z"
+              fill="#f97316"
+              opacity="0.9"
+            />
+            <path
+              d="M 55 95 Q 56 102 57 110 Q 55 105 55 95 Z"
+              fill="#fbbf24"
+              opacity="0.8"
+            />
+            
+            {/* Center flame */}
+            <path
+              d="M 50 98 Q 48 110 46 120 Q 50 112 54 120 Q 52 110 50 98 Z"
+              fill="#fb923c"
+              opacity="0.95"
+            />
+            <path
+              d="M 50 98 Q 49 105 48 112 Q 50 108 52 112 Q 51 105 50 98 Z"
+              fill="#fde047"
+              opacity="0.9"
+            />
+          </motion.g>
+          
+          {/* Glow effect */}
+          <motion.ellipse
+            cx="50"
+            cy="110"
+            rx="15"
+            ry="8"
+            fill="#f97316"
+            opacity="0.3"
+            animate={{ opacity: [0.2, 0.4, 0.2] }}
+            transition={{ duration: 0.3, repeat: Infinity }}
+          />
+        </svg>
+      </motion.div>
 
       {/* Chevron down icon - Larger with glow */}
       <motion.svg
