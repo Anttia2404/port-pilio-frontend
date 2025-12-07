@@ -22,7 +22,7 @@ const Footer = () => {
     },
     {
       icon: FiLinkedin,
-      href: "https://www.linkedin.com/",
+      href: "https://www.linkedin.com/in/t%E1%BA%A5n-t%C3%A0i-v%C3%B5-0549b4385/",
       label: "LinkedIn",
     },
     {

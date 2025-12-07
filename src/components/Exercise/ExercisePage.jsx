@@ -185,6 +185,25 @@ export default function ExercisePage() {
     }
   }
 
+  async function handleToggleViewed(lessonId, isViewed) {
+    try {
+      const updatedLesson = await api.toggleLessonViewed(lessonId, isViewed);
+      
+      // Update local state
+      setWeeks(prevWeeks => 
+        prevWeeks.map(week => ({
+          ...week,
+          exercises: week.exercises.map(ex => 
+            ex.id === lessonId ? updatedLesson : ex
+          )
+        }))
+      );
+    } catch (error) {
+      console.error('Failed to toggle viewed status:', error);
+      throw error;
+    }
+  }
+
   return (
     <section
       className="min-h-screen py-28 bg-gradient-to-br from-slate-50 via-purple-50 to-pink-50 dark:bg-gradient-to-br dark:from-neutral-900 dark:via-purple-950/30 dark:to-pink-950/30 relative overflow-hidden"
@@ -274,6 +293,7 @@ export default function ExercisePage() {
               handleDeleteWeek={handleDeleteWeek}
               setSelectedExercise={setSelectedExercise}
               setIsAddingForWeek={setIsAddingForWeek}
+              onViewedToggle={handleToggleViewed}
               isLoading={isLoading}
             />
           ))}

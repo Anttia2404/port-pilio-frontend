@@ -6,6 +6,7 @@ export default function WeekSection({
   handleDeleteWeek,
   setSelectedExercise,
   setIsAddingForWeek,
+  onViewedToggle,
 }) {
   return (
     <>
@@ -40,6 +41,7 @@ export default function WeekSection({
               key={ex.id}
               exercise={ex}
               onClick={() => setSelectedExercise(ex)}
+              onViewedToggle={onViewedToggle}
             />
           ))}
           <motion.button

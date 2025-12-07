@@ -56,3 +56,12 @@ export async function deleteLesson(lessonId) {
   });
   return handleResponse(response);
 }
+
+export async function toggleLessonViewed(lessonId, isViewed) {
+  const response = await fetch(`${API_BASE_URL}/lessons/${lessonId}/viewed`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ isViewed }),
+  });
+  return handleResponse(response);
+}

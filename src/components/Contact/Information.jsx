@@ -26,7 +26,7 @@ export default function Information() {
       icon: FiMapPin,
       label: "Địa chỉ",
       value: "Dĩ An, Bình Dương, Việt Nam",
-      href: "https://goo.gl/maps/yourLocation",
+      href: "https://www.google.com/maps/search/Dĩ+An,+Bình+Dương,+Việt+Nam",
       color: "text-blue-500",
       bgColor: "bg-blue-50 dark:bg-blue-900/20",
       borderColor: "hover:border-blue-200 dark:hover:border-blue-800",
@@ -37,7 +37,7 @@ export default function Information() {
     {
       icon: SiFacebook,
       label: "Facebook",
-      href: "https://facebook.com/yourprofile",
+      href: "https://www.facebook.com/tan.tai.124297/?locale=vi_VN",
       color: "#1877F2",
     },
     {
@@ -49,7 +49,7 @@ export default function Information() {
     {
       icon: SiLinkedin,
       label: "LinkedIn",
-      href: "https://linkedin.com/in/yourprofile",
+      href: "https://www.linkedin.com/in/t%E1%BA%A5n-t%C3%A0i-v%C3%B5-0549b4385/",
       color: "#0A66C2",
     },
   ];
