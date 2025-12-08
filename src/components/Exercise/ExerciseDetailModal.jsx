@@ -1,19 +1,18 @@
 import { motion } from "framer-motion";
-import { FiGithub, FiLink, FiEdit, FiTrash2 } from "react-icons/fi";
+import { FiGithub, FiLink } from "react-icons/fi";
 
 export default function ExerciseDetailModal({
   exercise,
   onClose,
-  onEdit,
-  onDelete,
 }) {
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={onClose}>
       <motion.div
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         exit={{ opacity: 0, scale: 0.9 }}
         className="bg-white dark:bg-neutral-800 rounded-lg shadow-xl w-full max-w-md p-6 relative"
+        onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
@@ -31,7 +30,7 @@ export default function ExerciseDetailModal({
             <label className="block text-sm font-medium text-gray-500 dark:text-gray-400 mb-1">
               Ghi chú
             </label>
-            <p className="text-gray-800 dark:text-gray-200 p-3 bg-gray-50 dark:bg-neutral-700 rounded-md min-h-[50px]">
+            <p className="text-gray-800 dark:text-gray-200 p-3 bg-gray-50 dark:bg-neutral-700 rounded-md min-h-[50px] whitespace-pre-line">
               {exercise.notes || "(Không có ghi chú)"}
             </p>
           </div>
@@ -62,21 +61,6 @@ export default function ExerciseDetailModal({
               <FiLink /> Deploy
             </a>
           </div>
-        </div>
-
-        <div className="flex justify-end gap-3 mt-6 pt-4 border-t border-gray-200 dark:border-neutral-700">
-          <button
-            onClick={() => onEdit(exercise)}
-            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md font-medium hover:bg-gray-300 dark:bg-neutral-700 dark:text-gray-200 dark:hover:bg-neutral-600 flex items-center gap-2"
-          >
-            <FiEdit /> Sửa
-          </button>
-          <button
-            onClick={() => onDelete(exercise.id)}
-            className="px-4 py-2 bg-red-600 text-white rounded-md font-medium hover:bg-red-700 flex items-center gap-2"
-          >
-            <FiTrash2 /> Xóa
-          </button>
         </div>
       </motion.div>
     </div>

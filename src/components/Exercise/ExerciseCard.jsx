@@ -1,6 +1,32 @@
 import { motion } from "framer-motion";
-import { FiCode, FiEye, FiEyeOff } from "react-icons/fi";
+import { 
+  FiBook, 
+  FiLayers, 
+  FiCode, 
+  FiServer, 
+  FiFileText, 
+  FiShoppingCart, 
+  FiTag, 
+  FiDatabase,
+  FiBox,
+  FiMail,
+  FiEye, 
+  FiEyeOff 
+} from "react-icons/fi";
 import { useState } from "react";
+
+const iconMap = {
+  book: FiBook,
+  layers: FiLayers,
+  code: FiCode,
+  server: FiServer,
+  "file-text": FiFileText,
+  "shopping-cart": FiShoppingCart,
+  tag: FiTag,
+  database: FiDatabase,
+  box: FiBox,
+  mail: FiMail,
+};
 
 export default function ExerciseCard({ exercise, onClick, onViewedToggle }) {
   const [isViewed, setIsViewed] = useState(exercise.isViewed || false);
@@ -24,13 +50,22 @@ export default function ExerciseCard({ exercise, onClick, onViewedToggle }) {
     }
   };
 
+  const Icon = iconMap[exercise.icon] || FiCode;
+  const iconColor = exercise.color || "#10B981";
+
   return (
     <motion.div
       onClick={onClick}
       className="group relative bg-white dark:bg-neutral-800 rounded-2xl shadow-sm p-6 h-36 flex flex-col items-center justify-center text-center 
-                 border border-gray-100 dark:border-gray-700 hover:border-green-500/50 dark:hover:border-emerald-400/50
-                 hover:shadow-lg hover:shadow-green-500/10 transition-all duration-300 cursor-pointer overflow-hidden"
-      whileHover={{ y: -5 }}
+                 border-2 border-transparent hover:shadow-lg transition-all duration-300 cursor-pointer overflow-hidden"
+      style={{
+        borderColor: 'transparent',
+      }}
+      whileHover={{ 
+        y: -5,
+        borderColor: iconColor,
+        boxShadow: `0 10px 30px ${iconColor}20`,
+      }}
       whileTap={{ scale: 0.95 }}
       layout
     >
@@ -60,14 +95,31 @@ export default function ExerciseCard({ exercise, onClick, onViewedToggle }) {
         )}
       </motion.button>
 
-      {/* Existing card content */}
-      <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-transparent to-green-50 dark:to-green-900/20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150"></div>
+      {/* Background gradient effect */}
+      <div 
+        className="absolute top-0 right-0 w-20 h-20 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-150 opacity-10"
+        style={{ backgroundColor: iconColor }}
+      ></div>
       
-      <div className="p-3 bg-green-50 dark:bg-green-900/30 rounded-xl mb-3 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300">
-        <FiCode className="w-6 h-6 text-green-600 dark:text-emerald-400" />
+      {/* Icon with dynamic color */}
+      <div 
+        className="p-3 rounded-xl mb-3 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300"
+        style={{ 
+          backgroundColor: `${iconColor}15`,
+        }}
+      >
+        <Icon 
+          className="w-6 h-6" 
+          style={{ color: iconColor }}
+        />
       </div>
       
-      <span className="font-semibold text-gray-800 dark:text-gray-200 group-hover:text-green-600 dark:group-hover:text-emerald-400 transition-colors line-clamp-2">
+      <span 
+        className="font-semibold text-gray-800 dark:text-gray-200 transition-colors line-clamp-2 group-hover:font-bold"
+        style={{
+          color: undefined,
+        }}
+      >
         {exercise.title}
       </span>
     </motion.div>
